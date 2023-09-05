@@ -1,0 +1,16 @@
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\bin\Debug\net6.0-windows\FTP_CLIENT.exe
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\bin\Debug\net6.0-windows\FTP_CLIENT.deps.json
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\bin\Debug\net6.0-windows\FTP_CLIENT.runtimeconfig.json
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\bin\Debug\net6.0-windows\FTP_CLIENT.dll
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\bin\Debug\net6.0-windows\FTP_CLIENT.pdb
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.Form1.resources
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.AssemblyInfo.cs
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.dll
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\refint\FTP_CLIENT.dll
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.pdb
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.genruntimeconfig.cache
+C:\Users\Admin\Desktop\FTP__EXAM\FTP_CLIENT\FTP_CLIENT\obj\Debug\net6.0-windows\ref\FTP_CLIENT.dll
