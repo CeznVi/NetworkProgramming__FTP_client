@@ -45,9 +45,12 @@
             button_Delete = new Button();
             contextMenuStrip_forTree = new ContextMenuStrip(components);
             скачатьToolStripMenuItem = new ToolStripMenuItem();
+            переименоватьToolStripMenuItem = new ToolStripMenuItem();
             удалитьToolStripMenuItem = new ToolStripMenuItem();
             button_download = new Button();
             button_rename = new Button();
+            button_uploadFile = new Button();
+            загрузитьНаСерверToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             contextMenuStrip_forTree.SuspendLayout();
@@ -156,7 +159,7 @@
             // 
             // button_Delete
             // 
-            button_Delete.Location = new Point(607, 173);
+            button_Delete.Location = new Point(607, 137);
             button_Delete.Name = "button_Delete";
             button_Delete.Size = new Size(181, 30);
             button_Delete.TabIndex = 10;
@@ -166,21 +169,28 @@
             // 
             // contextMenuStrip_forTree
             // 
-            contextMenuStrip_forTree.Items.AddRange(new ToolStripItem[] { скачатьToolStripMenuItem, удалитьToolStripMenuItem });
+            contextMenuStrip_forTree.Items.AddRange(new ToolStripItem[] { скачатьToolStripMenuItem, переименоватьToolStripMenuItem, удалитьToolStripMenuItem, загрузитьНаСерверToolStripMenuItem });
             contextMenuStrip_forTree.Name = "contextMenuStrip";
-            contextMenuStrip_forTree.Size = new Size(119, 48);
+            contextMenuStrip_forTree.Size = new Size(186, 114);
             // 
             // скачатьToolStripMenuItem
             // 
             скачатьToolStripMenuItem.Name = "скачатьToolStripMenuItem";
-            скачатьToolStripMenuItem.Size = new Size(118, 22);
+            скачатьToolStripMenuItem.Size = new Size(185, 22);
             скачатьToolStripMenuItem.Text = "Скачать";
             скачатьToolStripMenuItem.Click += скачатьToolStripMenuItem_Click;
+            // 
+            // переименоватьToolStripMenuItem
+            // 
+            переименоватьToolStripMenuItem.Name = "переименоватьToolStripMenuItem";
+            переименоватьToolStripMenuItem.Size = new Size(185, 22);
+            переименоватьToolStripMenuItem.Text = "Переименовать";
+            переименоватьToolStripMenuItem.Click += переименоватьToolStripMenuItem_Click;
             // 
             // удалитьToolStripMenuItem
             // 
             удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            удалитьToolStripMenuItem.Size = new Size(118, 22);
+            удалитьToolStripMenuItem.Size = new Size(185, 22);
             удалитьToolStripMenuItem.Text = "Удалить";
             удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
@@ -204,11 +214,29 @@
             button_rename.UseVisualStyleBackColor = true;
             button_rename.Click += button_rename_Click;
             // 
+            // button_uploadFile
+            // 
+            button_uploadFile.Location = new Point(607, 173);
+            button_uploadFile.Name = "button_uploadFile";
+            button_uploadFile.Size = new Size(181, 30);
+            button_uploadFile.TabIndex = 16;
+            button_uploadFile.Text = "Загрузить на сервер";
+            button_uploadFile.UseVisualStyleBackColor = true;
+            button_uploadFile.Click += button_uploadFile_Click;
+            // 
+            // загрузитьНаСерверToolStripMenuItem
+            // 
+            загрузитьНаСерверToolStripMenuItem.Name = "загрузитьНаСерверToolStripMenuItem";
+            загрузитьНаСерверToolStripMenuItem.Size = new Size(185, 22);
+            загрузитьНаСерверToolStripMenuItem.Text = "Загрузить на сервер";
+            загрузитьНаСерверToolStripMenuItem.Click += загрузитьНаСерверToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button_uploadFile);
             Controls.Add(button_rename);
             Controls.Add(button_download);
             Controls.Add(button_Delete);
@@ -255,5 +283,8 @@
         private Button button_download;
         private ToolStripMenuItem скачатьToolStripMenuItem;
         private Button button_rename;
+        private ToolStripMenuItem переименоватьToolStripMenuItem;
+        private Button button_uploadFile;
+        private ToolStripMenuItem загрузитьНаСерверToolStripMenuItem;
     }
 }

@@ -110,6 +110,18 @@ namespace FTP_CLIENT
             if (CheckSelectedItemTree())
                 DownloadSelectedItem();
         }
+        /// Переименовать
+        private void переименоватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckSelectedItemTree())
+                RenameSelectedItem();
+        }
+        //Загрузить на сервер
+
+        private void загрузитьНаСерверToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UploadSelectedItem();
+        }
         ///////--------------------------------------------------------------------END
 
         ///--------------------------------------------------------Кнопки вызов cобытий
@@ -132,7 +144,11 @@ namespace FTP_CLIENT
             if (CheckSelectedItemTree())
                 RenameSelectedItem();
         }
-
+        //Загрузить на сервер
+        private void button_uploadFile_Click(object sender, EventArgs e)
+        {
+            UploadSelectedItem();
+        }
 
         ///////--------------------------------------------------------------------END
 
@@ -350,6 +366,57 @@ namespace FTP_CLIENT
 
         }
 
+        //******************        Загрузка на ФТП //
+        private void UploadSelectedItem()
+        {
+
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Title = "Выбирите файл который необходимо загрузить";
+
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileStream fsUpload = new FileStream(fileDialog.FileName, FileMode.Open);
+                    
+                    byte[] fileUploadByte = new byte[fsUpload.Length];
+                    fsUpload.Read(fileUploadByte, 0, fileUploadByte.Length);
+
+                    Uri uriUploadFile = new Uri(GetCurrentPath() + "/" + Path.GetFileName(fileDialog.FileName));
+                    //MessageBox.Show(uriUploadFile.ToString());
+
+                    if (uriUploadFile.Scheme != Uri.UriSchemeFtp)
+                    {
+                        MessageBox.Show("Некоректный адресс");
+                        return;
+                    }
+
+                    FtpWebRequest ftpWebRequestUpload = (FtpWebRequest)WebRequest.Create(uriUploadFile);
+                    ftpWebRequestUpload.Credentials = new NetworkCredential("ftp", "ftp");
+                    ftpWebRequestUpload.Method = WebRequestMethods.Ftp.UploadFile;
+                    ftpWebRequestUpload.ContentLength = fileDialog.FileName.Length;
+
+                    Stream reaquestStrem = ftpWebRequestUpload.GetRequestStream();
+                    reaquestStrem.Write(fileUploadByte, 0, fileUploadByte.Length);
+                    reaquestStrem.Close();
+                    FtpWebResponse ftpWebResponseIploadFile = (FtpWebResponse)ftpWebRequestUpload.GetResponse();
+
+                    toolStripStatusLabel.Text = ftpWebResponseIploadFile.StatusDescription;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                UpdateView();
+
+
+            }
+            else
+                return;
+        }
+
         ///////--------------------------------------------------------------------END
 
         ///--------------------------------------------------------МЕТОДЫ различных проверок
@@ -388,6 +455,25 @@ namespace FTP_CLIENT
                 return false;
         }
 
+        private string GetCurrentPath()
+        {
+            if (treeView_server.SelectedNode == null)
+                return textBox_host.Text;
+            else
+            {
+                if (treeView_server.SelectedNode.FullPath == textBox_host.Text)
+                    return textBox_host.Text;
+                else
+                {
+                    if (treeView_server.SelectedNode.Tag.ToString() == "File")
+                    {
+                        return treeView_server.SelectedNode.Parent.FullPath;
+                    }
+                    else
+                        return treeView_server.SelectedNode.FullPath;
+                }
+            }
+        }
 
         ///////--------------------------------------------------------------------END
 
