@@ -96,16 +96,24 @@ namespace FTP_CLIENT
         }
 
         ///--------------------------------------------------------Контектсное меню вызов cобытий
+
+        // удалить
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (CheckSelectedItemTree())
                 DeleteSelectedItem();
 
         }
+        // скачать
+        private void скачатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckSelectedItemTree())
+                DownloadSelectedItem();
+        }
         ///////--------------------------------------------------------------------END
 
         ///--------------------------------------------------------Кнопки вызов cобытий
-        
+
         //УДАЛИТЬ
         private void button_Delete_Click(object sender, EventArgs e)
         {
@@ -118,6 +126,14 @@ namespace FTP_CLIENT
             if (CheckSelectedItemTree())
                 DownloadSelectedItem();
         }
+        ///Переименовать
+        private void button_rename_Click(object sender, EventArgs e)
+        {
+            if (CheckSelectedItemTree())
+                RenameSelectedItem();
+        }
+
+
         ///////--------------------------------------------------------------------END
 
         ///--------------------------------------------------------МЕТОДЫ реализации действий
@@ -235,7 +251,6 @@ namespace FTP_CLIENT
             else
                 return;
         }
-
         private void DownloadFile()
         {
             string downloadPath = treeView_server.SelectedNode.FullPath;
@@ -255,7 +270,7 @@ namespace FTP_CLIENT
                 folderBrowserDialog.UseDescriptionForTitle = true;
                 folderBrowserDialog.Description = "Выбирите папку в которую необходимо скачать файл";
                 string pathToSaveFile;
-                
+
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     pathToSaveFile = folderBrowserDialog.SelectedPath;
@@ -294,7 +309,46 @@ namespace FTP_CLIENT
             UpdateView();
         }
 
+        //******************        Переименовать //
 
+        private void RenameSelectedItem()
+        {
+            ReNameForm reNameForm = new ReNameForm(treeView_server.SelectedNode.Text);
+
+            if (reNameForm.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Uri uriReNameObj = new Uri(treeView_server.SelectedNode.FullPath);
+
+                    if (uriReNameObj.Scheme != Uri.UriSchemeFtp)
+                    {
+                        MessageBox.Show("Некоректный адресс");
+                        return;
+                    }
+
+                    FtpWebRequest ftpWebRequestReNameObj = (FtpWebRequest)WebRequest.Create(uriReNameObj);
+                    ftpWebRequestReNameObj.Credentials = new NetworkCredential(textBox_login.Text, textBox_pasw.Text);
+                    ftpWebRequestReNameObj.Method = WebRequestMethods.Ftp.Rename;
+                    ftpWebRequestReNameObj.RenameTo = reNameForm.NewName;
+
+                    FtpWebResponse ftpWebResponseReNameObj = (FtpWebResponse)ftpWebRequestReNameObj.GetResponse();
+
+                    toolStripStatusLabel.Text = ftpWebResponseReNameObj.StatusDescription;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                UpdateView();
+            }
+            else
+            {
+                return;
+            }
+
+        }
 
         ///////--------------------------------------------------------------------END
 
@@ -333,80 +387,9 @@ namespace FTP_CLIENT
             else
                 return false;
         }
+
+
         ///////--------------------------------------------------------------------END
-
-
-
-
-        /// ПЕРЕДЕЛАТЬ!!
-        //private void button_Delete_Click(object sender, EventArgs e)
-        //{
-        //    if (treeView_server.SelectedNode != null)
-        //    {
-        //        Uri uriDeleteFile = new Uri(textBox_host.Text + treeView_server.SelectedNode.Text);
-
-        //        if (uriDeleteFile.Scheme != Uri.UriSchemeFtp)
-        //        {
-        //            MessageBox.Show("Некоректный адресс");
-        //            return;
-        //        }
-
-        //        FtpWebRequest ftpWebRequestDeleteFile = (FtpWebRequest)WebRequest.Create(uriDeleteFile);
-        //        ftpWebRequestDeleteFile.Credentials = new NetworkCredential(textBox_login.Text, textBox_pasw.Text);
-        //        ftpWebRequestDeleteFile.Method = WebRequestMethods.Ftp.DeleteFile;
-
-        //        FtpWebResponse ftpWebResponseDeleteFile = (FtpWebResponse)ftpWebRequestDeleteFile.GetResponse();
-
-        //        MessageBox.Show($"Status description: {ftpWebResponseDeleteFile.StatusDescription}");
-
-
-        //        //Connect();
-        //    }
-
-        //}
-
-        private void button_rename_Click(object sender, EventArgs e)
-        {
-            if (treeView_server.SelectedNode != null)
-            {
-
-                Uri uriRenameFile = new Uri(textBox_host.Text + treeView_server.SelectedNode.Text);
-
-
-                if (uriRenameFile.Scheme != Uri.UriSchemeFtp)
-                {
-                    MessageBox.Show("Некоректный адресс");
-                    return;
-                }
-
-                try
-                {
-                    FtpWebRequest ftpWebRequestRename = (FtpWebRequest)WebRequest.Create(uriRenameFile);
-                    ftpWebRequestRename.Credentials = new NetworkCredential(textBox_login.Text, textBox_pasw.Text);
-                    ftpWebRequestRename.Method = WebRequestMethods.Ftp.Rename;
-
-
-                    ftpWebRequestRename.RenameTo = textBox_fname.Text + treeView_server.SelectedNode.Text;
-
-
-                    FtpWebResponse ftpWebResponseRenameFile = (FtpWebResponse)ftpWebRequestRename.GetResponse();
-
-                    MessageBox.Show($"Status description: {ftpWebResponseRenameFile.StatusDescription}");
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-            }
-        }
-
-        private void treeView_server_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
 
 
     }

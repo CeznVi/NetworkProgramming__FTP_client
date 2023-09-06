@@ -30,3 +30,4 @@ D:\Програмирование\source\repos\ItStep_HW_OOP\NetworkProgramming_
 D:\Програмирование\source\repos\ItStep_HW_OOP\NetworkProgramming__FTP_client\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.pdb
 D:\Програмирование\source\repos\ItStep_HW_OOP\NetworkProgramming__FTP_client\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.genruntimeconfig.cache
 D:\Програмирование\source\repos\ItStep_HW_OOP\NetworkProgramming__FTP_client\FTP_CLIENT\obj\Debug\net6.0-windows\ref\FTP_CLIENT.dll
+D:\Програмирование\source\repos\ItStep_HW_OOP\NetworkProgramming__FTP_client\FTP_CLIENT\obj\Debug\net6.0-windows\FTP_CLIENT.ReNameForm.resources

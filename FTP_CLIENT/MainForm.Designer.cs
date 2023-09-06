@@ -43,12 +43,11 @@
             button_connect = new Button();
             treeView_server = new TreeView();
             button_Delete = new Button();
-            button_rename = new Button();
-            label3 = new Label();
-            textBox_fname = new TextBox();
             contextMenuStrip_forTree = new ContextMenuStrip(components);
+            скачатьToolStripMenuItem = new ToolStripMenuItem();
             удалитьToolStripMenuItem = new ToolStripMenuItem();
             button_download = new Button();
+            button_rename = new Button();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             contextMenuStrip_forTree.SuspendLayout();
@@ -154,11 +153,10 @@
             treeView_server.PathSeparator = "/";
             treeView_server.Size = new Size(588, 362);
             treeView_server.TabIndex = 9;
-            treeView_server.AfterSelect += treeView_server_AfterSelect;
             // 
             // button_Delete
             // 
-            button_Delete.Location = new Point(607, 101);
+            button_Delete.Location = new Point(607, 173);
             button_Delete.Name = "button_Delete";
             button_Delete.Size = new Size(181, 30);
             button_Delete.TabIndex = 10;
@@ -166,37 +164,18 @@
             button_Delete.UseVisualStyleBackColor = true;
             button_Delete.Click += button_Delete_Click;
             // 
-            // button_rename
-            // 
-            button_rename.Location = new Point(607, 212);
-            button_rename.Name = "button_rename";
-            button_rename.Size = new Size(181, 23);
-            button_rename.TabIndex = 11;
-            button_rename.Text = "Rename";
-            button_rename.UseVisualStyleBackColor = true;
-            button_rename.Click += button_rename_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(607, 156);
-            label3.Name = "label3";
-            label3.Size = new Size(87, 15);
-            label3.TabIndex = 12;
-            label3.Text = "New File Name";
-            // 
-            // textBox_fname
-            // 
-            textBox_fname.Location = new Point(607, 183);
-            textBox_fname.Name = "textBox_fname";
-            textBox_fname.Size = new Size(116, 23);
-            textBox_fname.TabIndex = 13;
-            // 
             // contextMenuStrip_forTree
             // 
-            contextMenuStrip_forTree.Items.AddRange(new ToolStripItem[] { удалитьToolStripMenuItem });
+            contextMenuStrip_forTree.Items.AddRange(new ToolStripItem[] { скачатьToolStripMenuItem, удалитьToolStripMenuItem });
             contextMenuStrip_forTree.Name = "contextMenuStrip";
-            contextMenuStrip_forTree.Size = new Size(119, 26);
+            contextMenuStrip_forTree.Size = new Size(119, 48);
+            // 
+            // скачатьToolStripMenuItem
+            // 
+            скачатьToolStripMenuItem.Name = "скачатьToolStripMenuItem";
+            скачатьToolStripMenuItem.Size = new Size(118, 22);
+            скачатьToolStripMenuItem.Text = "Скачать";
+            скачатьToolStripMenuItem.Click += скачатьToolStripMenuItem_Click;
             // 
             // удалитьToolStripMenuItem
             // 
@@ -215,15 +194,23 @@
             button_download.UseVisualStyleBackColor = true;
             button_download.Click += button_download_Click;
             // 
+            // button_rename
+            // 
+            button_rename.Location = new Point(607, 101);
+            button_rename.Name = "button_rename";
+            button_rename.Size = new Size(181, 30);
+            button_rename.TabIndex = 15;
+            button_rename.Text = "Переименовать";
+            button_rename.UseVisualStyleBackColor = true;
+            button_rename.Click += button_rename_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button_download);
-            Controls.Add(textBox_fname);
-            Controls.Add(label3);
             Controls.Add(button_rename);
+            Controls.Add(button_download);
             Controls.Add(button_Delete);
             Controls.Add(treeView_server);
             Controls.Add(button_connect);
@@ -263,11 +250,10 @@
         private Button button_connect;
         private TreeView treeView_server;
         private Button button_Delete;
-        private Button button_rename;
-        private Label label3;
-        private TextBox textBox_fname;
         private ContextMenuStrip contextMenuStrip_forTree;
         private ToolStripMenuItem удалитьToolStripMenuItem;
         private Button button_download;
+        private ToolStripMenuItem скачатьToolStripMenuItem;
+        private Button button_rename;
     }
 }
